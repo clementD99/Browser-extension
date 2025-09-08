@@ -1,5 +1,16 @@
 /* ----- Pour le CSS ----- */
 
+:root {
+  --base-color: linear-gradient(180deg, #ebf2fc 0%, #eef8f9 100%);
+  --text-color: hsl(227, 75%, 14%);
+}
+
+.darkmode {
+  background: linear-gradient(180deg, #040918 0%, #091540 100%);
+  --text-color: white;
+  --secondary-text: hsl(227, 75%, 14%);
+}
+
 * {
   font-family: "Noto Sans", sans-serif;
 }
@@ -9,10 +20,21 @@ body {
   padding: 0;
   height: 100%;
   font-size: 16px;
+  background: var(--base-color);
 }
 
+p {
+  margin: 0;
+  color: var(--secondary-text);
+}
+
+h1 {
+  color: var(--text-color);
+}
+
+/* ----- Container pour l'ensemble du projet ----- */
+
 .container {
-  background: linear-gradient(180deg, #ebf2fc 0%, #eef8f9 100%);
   min-height: 100vh;
   padding: 30px 0;
   display: flex;
@@ -20,7 +42,7 @@ body {
   flex-direction: column;
 }
 
-/* ----- Header et éléments ----- */
+/* ----- Header + éléments ----- */
 
 .header {
   display: flex;
@@ -46,7 +68,7 @@ body {
   transition: 2s;
 }
 
-/* ----- Extensions & buttons ----- */
+/* ----- Extensions + elements ----- */
 
 .extensions {
   display: flex;
@@ -54,6 +76,56 @@ body {
   justify-content: space-between;
   width: 75%;
 }
+
+#extensions-list {
+  display: grid;
+  width: 75%;
+  gap: 10px;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.elements {
+  background-color: hsl(200, 60%, 99%);
+  padding: 16px;
+  border-radius: 10px;
+}
+
+.extensions-elements {
+  display: flex;
+  align-items: center;
+  margin-bottom: 32px;
+  gap: 5px;
+}
+
+.extensions-infos {
+  & .name {
+    font-weight: bold;
+  }
+
+  & .infos {
+    font-size: 18px;
+  }
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+
+  & .remove {
+    cursor: pointer;
+    background-color: transparent;
+    border: 1px solid black;
+    border-radius: 20px;
+    transition: 0.5s;
+  }
+
+  & .remove:hover {
+    background-color: hsl(3, 77%, 44%);
+    transition: 0.5s;
+  }
+}
+
+/* ----- Buttons ----- */
 
 .buttons button {
   border: none;
@@ -63,4 +135,60 @@ body {
   padding-right: 15px;
   background: hsl(200, 60%, 99%);
   cursor: pointer;
+}
+
+/* ----- checkbox switch ----- */
+
+.switch {
+  position: relative;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.check {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: hsl(217, 61%, 90%);
+  transition: 0.4s;
+}
+
+.check:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+}
+
+input:checked + .check {
+  background-color: hsl(3, 77%, 44%);
+}
+
+input:focus + .check {
+  box-shadow: 0 0 1px hsl(3, 77%, 44%);
+}
+
+input:checked + .check:before {
+  transform: translateX(26px);
+}
+
+.check.round {
+  border-radius: 34px;
+}
+
+.check.round:before {
+  border-radius: 50%;
 }
