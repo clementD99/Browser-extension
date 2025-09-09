@@ -1,9 +1,4 @@
-const allButton = document.querySelector(".all_btn");
-const activeButton = document.querySelector(".active_btn");
-const inactiveButton = document.querySelector(".inactive_btn");
 const extensionsList = document.getElementById("extensions-list");
-const buttonTheme = document.getElementById("change-theme");
-const changeTheme = localStorage.theme;
 let extensions = [];
 
 // Pour récupérer les données du data.json
@@ -29,12 +24,12 @@ function displayExtensions(extensions) {
       <div class="extensions-elements">
         <img src="${extension.logo}" alt="${extension.name}">
         <div class="extensions-infos">
-          <div class="name">${extension.name}</div>
+          <div class="name"><h2>${extension.name}</h2></div>
           <div class="infos"><p>${extension.description}</p></div>
         </div>
        </div>
         <div class="actions">
-         <button class="remove">Remove</button>
+         <button class="remove"><span>Remove</span></button>
         <label class="switch">
          <input type="checkbox">
          <span class="check round"></span>
@@ -45,10 +40,44 @@ function displayExtensions(extensions) {
   });
 }
 
-// Affiche les données du displayExtensions sur la page
+// données du displayExtensions sur la page
 fetchExtensions().then((data) => {
   if (data) {
     extensions = data;
     displayExtensions(extensions);
   }
+});
+
+// ----- darkmode ----- //
+
+const buttonTheme = document.getElementById("change-theme");
+
+const enableDarkmode = () => {
+  document.body.classList.add("darkmode");
+  localStorage.setItem("darkmode", "active");
+};
+
+const disableDarkmode = () => {
+  document.body.classList.remove("darkmode");
+  localStorage.setItem("darkmode", "inactive");
+};
+
+buttonTheme.addEventListener("click", () => {
+  const changeTheme = localStorage.getItem("darkmode");
+  changeTheme !== "active" ? enableDarkmode() : disableDarkmode();
+});
+
+// ----- active + inactive buttons ----- //
+
+const buttons = document.querySelectorAll(".btn");
+
+buttons.forEach((button) => {
+  button.addEventListener("click", () => {
+    if (button.classList.contains("active-btn")) {
+      button.classList.remove("active-btn");
+    } else {
+      document.querySelector(".active-btn")?.classList.remove("active-btn");
+      button.classList.add("active-btn");
+    }
+  });
 });
