@@ -3,12 +3,7 @@
 :root {
   --base-color: linear-gradient(180deg, #ebf2fc 0%, #eef8f9 100%);
   --text-color: hsl(227, 75%, 14%);
-}
-
-.darkmode {
-  background: linear-gradient(180deg, #040918 0%, #091540 100%);
-  --text-color: white;
-  --secondary-text: hsl(227, 75%, 14%);
+  /* --img-color: hsl(225, 23%, 24%); */
 }
 
 * {
@@ -28,8 +23,18 @@ p {
   color: var(--secondary-text);
 }
 
+span {
+  font-size: 16px;
+}
+
 h1 {
   color: var(--text-color);
+}
+
+h2 {
+  margin: 0;
+  font-size: 20px;
+  margin-bottom: 5px;
 }
 
 /* ----- Container pour l'ensemble du projet ----- */
@@ -63,11 +68,6 @@ h1 {
   padding: 10px;
 }
 
-.header button:hover {
-  background-color: hsl(226, 11%, 37%);
-  transition: 2s;
-}
-
 /* ----- Extensions + elements ----- */
 
 .extensions {
@@ -92,9 +92,9 @@ h1 {
 
 .extensions-elements {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: 32px;
-  gap: 5px;
+  gap: 10px;
 }
 
 .extensions-infos {
@@ -114,27 +114,40 @@ h1 {
   & .remove {
     cursor: pointer;
     background-color: transparent;
-    border: 1px solid black;
+    border: 1px solid gray;
     border-radius: 20px;
     transition: 0.5s;
   }
 
   & .remove:hover {
     background-color: hsl(3, 77%, 44%);
+    border: 1px solid hsl(3, 77%, 44%);
     transition: 0.5s;
+  }
+
+  & .remove:hover span {
+    color: white;
   }
 }
 
 /* ----- Buttons ----- */
 
-.buttons button {
-  border: none;
+#buttons button {
   border-radius: 10px;
-  padding: 10px;
-  padding-left: 15px;
-  padding-right: 15px;
   background: hsl(200, 60%, 99%);
   cursor: pointer;
+}
+
+.btn {
+  padding: 10px 20px;
+  margin: 5px;
+  border: transparent;
+  background: #eee;
+  cursor: pointer;
+}
+
+.active-btn {
+  border: 1px solid red;
 }
 
 /* ----- checkbox switch ----- */
@@ -191,4 +204,31 @@ input:checked + .check:before {
 
 .check.round:before {
   border-radius: 50%;
+}
+
+/* ----- Darkmode ----- */
+
+.darkmode {
+  background: linear-gradient(180deg, #040918 0%, #091540 100%);
+  --text-color: white;
+  --secondary-text: hsl(227, 75%, 14%);
+}
+
+#change-theme {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.darkmode #change-theme img:first-child {
+  display: none;
+}
+
+.darkmode #change-theme img:last-child {
+  display: block;
+}
+
+#change-theme img:last-child {
+  display: none;
 }
