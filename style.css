@@ -1,9 +1,11 @@
-/* ----- Pour le CSS ----- */
-
 :root {
   --base-color: linear-gradient(180deg, #ebf2fc 0%, #eef8f9 100%);
   --text-color: hsl(227, 75%, 14%);
-  /* --img-color: hsl(225, 23%, 24%); */
+  --span-color: hsl(227, 75%, 14%);
+  --span-active: hsl(200, 60%, 99%);
+  --elements-color: hsl(200, 60%, 99%);
+  --header-color: hsl(200, 60%, 99%);
+  --background-span: hsl(200, 60%, 99%);
 }
 
 * {
@@ -13,18 +15,17 @@
 body {
   margin: 0;
   padding: 0;
-  height: 100%;
-  font-size: 16px;
   background: var(--base-color);
 }
 
 p {
   margin: 0;
-  color: var(--secondary-text);
+  color: var(--text-color);
 }
 
 span {
   font-size: 16px;
+  color: var(--span-color);
 }
 
 h1 {
@@ -35,6 +36,7 @@ h2 {
   margin: 0;
   font-size: 20px;
   margin-bottom: 5px;
+  color: var(--text-color);
 }
 
 /* ----- Container pour l'ensemble du projet ----- */
@@ -54,10 +56,9 @@ h2 {
   align-items: center;
   justify-content: space-between;
   width: 75%;
-  height: fit-content;
   padding: 10px 10px;
   border-radius: 10px;
-  background: white;
+  background: var(--header-color);
   box-shadow: 0 2px 5px 0 blue;
 }
 
@@ -85,7 +86,7 @@ h2 {
 }
 
 .elements {
-  background-color: hsl(200, 60%, 99%);
+  background-color: var(--elements-color);
   padding: 16px;
   border-radius: 10px;
 }
@@ -103,7 +104,7 @@ h2 {
   }
 
   & .infos {
-    font-size: 18px;
+    font-size: 16px;
   }
 }
 
@@ -126,15 +127,14 @@ h2 {
   }
 
   & .remove:hover span {
-    color: white;
+    color: var(--span-active);
   }
 }
 
 /* ----- Buttons ----- */
 
 #buttons button {
-  border-radius: 10px;
-  background: hsl(200, 60%, 99%);
+  border-radius: 25px;
   cursor: pointer;
 }
 
@@ -142,12 +142,15 @@ h2 {
   padding: 10px 20px;
   margin: 5px;
   border: transparent;
-  background: #eee;
-  cursor: pointer;
+  background-color: var(--background-span);
+}
+
+.active-btn span {
+  color: var(--span-active);
 }
 
 .active-btn {
-  border: 1px solid red;
+  background-color: hsl(3, 71%, 56%);
 }
 
 /* ----- checkbox switch ----- */
@@ -190,10 +193,6 @@ input:checked + .check {
   background-color: hsl(3, 77%, 44%);
 }
 
-input:focus + .check {
-  box-shadow: 0 0 1px hsl(3, 77%, 44%);
-}
-
 input:checked + .check:before {
   transform: translateX(26px);
 }
@@ -209,9 +208,13 @@ input:checked + .check:before {
 /* ----- Darkmode ----- */
 
 .darkmode {
-  background: linear-gradient(180deg, #040918 0%, #091540 100%);
-  --text-color: white;
-  --secondary-text: hsl(227, 75%, 14%);
+  --base-color: linear-gradient(180deg, #040918 0%, #091540 100%);
+  --text-color: hsl(200, 60%, 99%);
+  --span-color: hsl(200, 60%, 99%);
+  --span-active: hsl(227, 75%, 14%);
+  --background-span: hsl(226, 11%, 37%);
+  --elements-color: hsl(225, 23%, 24%);
+  --header-color: hsl(226, 25%, 17%);
 }
 
 #change-theme {
