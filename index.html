@@ -15,7 +15,9 @@
   <body>
     <div class="container">
       <div class="header">
-        <img src="./assets/images/logo.svg" alt="Browser extensions" />
+        <div class="logo">
+          <img src="./assets/images/logo.svg" alt="Browser extensions" />
+        </div>
         <button id="change-theme">
           <img src="./assets/images/icon-moon.svg" alt="Dark mode" />
           <img src="./assets/images/icon-sun.svg" alt="Light mode" />
@@ -24,9 +26,9 @@
       <div class="extensions">
         <h1>Extensions List</h1>
         <div id="buttons">
-          <button class="btn active-btn">All</button>
-          <button class="btn">Active</button>
-          <button class="btn">Inactive</button>
+          <button class="btn active-btn"><span>All</span></button>
+          <button class="btn"><span>Active</span></button>
+          <button class="btn"><span>Inactive</span></button>
         </div>
       </div>
       <section id="extensions-list"></section>
