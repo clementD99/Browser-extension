@@ -8,7 +8,7 @@ const fetchExtensions = async () => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error("Impossible de récupérer les données:", error);
+    console.error("Erreur:", error);
   }
 };
 
@@ -37,6 +37,12 @@ function displayExtensions(extensions) {
         </div>
       </div>`;
     extensionsList.appendChild(element);
+
+    // Pour supprimer un élément
+
+    element.querySelector(".remove").addEventListener("click", function () {
+      element.remove();
+    });
   });
 }
 
@@ -48,7 +54,7 @@ fetchExtensions().then((data) => {
   }
 });
 
-// ----- darkmode ----- //
+// ----- DARKMODE ----- //
 
 const buttonTheme = document.getElementById("change-theme");
 
