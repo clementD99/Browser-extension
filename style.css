@@ -6,6 +6,7 @@
   --elements-color: hsl(200, 60%, 99%);
   --header-color: hsl(200, 60%, 99%);
   --background-span: hsl(200, 60%, 99%);
+  --background-theme: hsl(0, 0%, 93%);
 }
 
 * {
@@ -76,6 +77,10 @@ h2 {
   align-items: center;
   justify-content: space-between;
   width: 75%;
+
+  @media (max-width: 375px) {
+    display: contents;
+  }
 }
 
 #extensions-list {
@@ -83,6 +88,11 @@ h2 {
   width: 75%;
   gap: 10px;
   grid-template-columns: 1fr 1fr 1fr;
+
+  @media (max-width: 375px) {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .elements {
@@ -132,6 +142,12 @@ h2 {
 }
 
 /* ----- Buttons ----- */
+
+#buttons {
+  @media (max-width: 375px) {
+    padding-bottom: 20px;
+  }
+}
 
 #buttons button {
   border-radius: 25px;
@@ -209,19 +225,18 @@ input:checked + .check:before {
 
 .darkmode {
   --base-color: linear-gradient(180deg, #040918 0%, #091540 100%);
-  --text-color: hsl(200, 60%, 99%);
+  --text-color: hsl(0, 0%, 78%);
   --span-color: hsl(200, 60%, 99%);
   --span-active: hsl(227, 75%, 14%);
   --background-span: hsl(226, 11%, 37%);
   --elements-color: hsl(225, 23%, 24%);
   --header-color: hsl(226, 25%, 17%);
+  --background-theme: hsl(226, 11%, 37%);
 }
 
 #change-theme {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
+  background-color: var(--background-theme);
 }
 
 .darkmode #change-theme img:first-child {
