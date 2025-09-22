@@ -12,7 +12,7 @@ const fetchExtensions = async () => {
   }
 };
 
-// Les éléments qui s'affichent dynamiquement dans le HTML
+// Les éléments qui s'affichent dans le HTML
 function displayExtensions(extensions) {
   extensionsList.innerHTML = "";
   extensions.forEach((extension) => {
@@ -31,12 +31,17 @@ function displayExtensions(extensions) {
         <div class="actions">
          <button class="remove"><span>Remove</span></button>
         <label class="switch">
-         <input type="checkbox">
+         <input type="checkbox" ${extension.isActive ? "checked" : ""}>
          <span class="check round"></span>
         </label>
         </div>
       </div>`;
     extensionsList.appendChild(element);
+
+    const checkbox = element.querySelector('input[type="checkbox"]');
+    checkbox.addEventListener("change", function () {
+      extension.isActive = checkbox.checked;
+    });
 
     // Pour supprimer un élément
 
@@ -79,11 +84,17 @@ const buttons = document.querySelectorAll(".btn");
 
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
-    if (button.classList.contains("active-btn")) {
-      button.classList.remove("active-btn");
-    } else {
-      document.querySelector(".active-btn")?.classList.remove("active-btn");
-      button.classList.add("active-btn");
+    document.querySelector(".active-btn")?.classList.remove("active-btn");
+    button.classList.add("active-btn");
+
+    let filtered;
+    if (button.textContent.trim() === "All") {
+      filtered = extensions;
+    } else if (button.textContent.trim() === "Active") {
+      filtered = extensions.filter((extension) => extension.isActive);
+    } else if (button.textContent.trim() === "Inactive") {
+      filtered = extensions.filter((extension) => !extension.isActive);
     }
+    displayExtensions(filtered);
   });
 });
